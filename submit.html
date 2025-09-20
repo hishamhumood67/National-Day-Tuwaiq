@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصمم الخلفيات الوطنية - أرسل تصميمك</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .design-interface {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        #designCanvas {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: block;
+            background: #f9f9f9;
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .control-group label {
+            font-weight: bold;
+            color: #333;
+            font-size: 0.9em;
+        }
+        
+        .controls button, .controls input, .controls select {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .controls button {
+            background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .submission-form {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .submission-form input, .submission-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .submission-form input:focus, .submission-form textarea:focus {
+            outline: none;
+            border-color: #00796b;
+        }
+        
+        #submitDesign {
+            background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%);
+            color: #333;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        #submitDesign:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .logo-gallery {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .logo-item {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+        
+        .logo-item:hover {
+            border-color: #00796b;
+            transform: scale(1.05);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #00796b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="assets/images/logo-tuwaig.png" alt="شعار أكاديمية طويق" class="logo">
+            <h1>أرسل تصميمك</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-link">← العودة للصفحة الرئيسية</a>
+            <section class="design-interface">
+                <h2 style="text-align: center; color: #004d40; margin-bottom: 30px;">صمم خلفيتك الوطنية</h2>
+                
+                <!-- Canvas for interactive design -->
+                <canvas id="designCanvas" width="600" height="400"></canvas>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label>إضافة نص</label>
+                        <button id="addText">إضافة نص</button>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>لون النص</label>
+                        <input type="color" id="textColorPicker" value="#004d40">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>نوع الخط</label>
+                        <select id="fontSelector">
+                            <option value="Arial">Arial</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Tajawal">Tajawal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>حجم الخط</label>
+                        <select id="fontSizeSelector">
+                            <option value="20">صغير</option>
+                            <option value="30" selected>متوسط</option>
+                            <option value="40">كبير</option>
+                            <option value="50">كبير جداً</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>لون الخلفية</label>
+                        <input type="color" id="backgroundColorPicker" value="#ffffff">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>مسح الكل</label>
+                        <button id="clearCanvas">مسح</button>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <h3>اختر شعار اليوم الوطني:</h3>
+                    <div class="logo-gallery">
+                        <img src="assets/images/national-day-logo-1.webp" class="logo-item" data-logo="1" alt="شعار اليوم الوطني 1">
+                        <img src="assets/images/national-day-logo-2.jpg" class="logo-item" data-logo="2" alt="شعار اليوم الوطني 2">
+                        <img src="assets/images/national-day-logo-3.jpg" class="logo-item" data-logo="3" alt="شعار اليوم الوطني 3">
+                    </div>
+                </div>
+                
+                <div class="submission-form">
+                    <h3 style="color: #004d40; margin-bottom: 20px;">معلومات الطالب</h3>
+                    <input type="text" id="studentName" placeholder="الاسم الكامل" required>
+                    <input type="text" id="studentClass" placeholder="الصف" required>
+                    <textarea id="studentComment" placeholder="تعليق أو رسالة قصيرة (اختياري)" rows="3"></textarea>
+                    <button id="submitDesign">إرسال التصميم</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 مصمم الخلفيات الوطنية - أكاديمية طويق. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+    <script src="assets/js/submit.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصمم الخلفيات الوطنية - لوحة الإدارة</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-panel {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .password-protection {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .password-protection input {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 10px;
+            width: 250px;
+            max-width: 90%;
+        }
+        
+        .password-protection button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .password-protection button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .admin-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .admin-actions button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .download-all-btn {
+            background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+            color: white;
+        }
+        
+        .print-all-btn {
+            background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%);
+            color: #333;
+        }
+        
+        .export-pdf-btn {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+        }
+        
+        .clear-all-btn {
+            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+            color: white;
+        }
+        
+        .admin-actions button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .admin-design-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .admin-design-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-design-card:hover {
+            border-color: #00796b;
+            transform: translateY(-2px);
+        }
+        
+        .admin-design-card.selected {
+            border-color: #ffc107;
+            background: #fff8e1;
+        }
+        
+        .admin-design-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .admin-design-info {
+            font-size: 0.9em;
+        }
+        
+        .admin-design-info h4 {
+            margin: 0 0 5px 0;
+            color: #004d40;
+        }
+        
+        .admin-design-info p {
+            margin: 2px 0;
+            color: #666;
+        }
+        
+        .design-checkbox {
+            margin-bottom: 10px;
+        }
+        
+        .design-checkbox input {
+            margin-left: 8px;
+            transform: scale(1.2);
+        }
+        
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #00796b;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #004d40;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #00796b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .select-all-controls {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .select-all-controls button {
+            padding: 8px 15px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .select-all-btn {
+            background: #28a745;
+            color: white;
+        }
+        
+        .deselect-all-btn {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="assets/images/logo-tuwaig.png" alt="شعار أكاديمية طويق" class="logo">
+            <h1>لوحة الإدارة</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-link">← العودة للصفحة الرئيسية</a>
+            <section class="admin-panel">
+                <h2 style="text-align: center; color: #004d40; margin-bottom: 30px;">إدارة التصاميم</h2>
+                
+                <div class="password-protection" id="passwordSection">
+                    <h3>تسجيل الدخول</h3>
+                    <p>يرجى إدخال كلمة المرور للوصول إلى لوحة الإدارة</p>
+                    <input type="password" id="adminPassword" placeholder="كلمة المرور">
+                    <br>
+                    <button id="loginAdmin">دخول</button>
+                    <p style="font-size: 0.8em; color: #666; margin-top: 15px;">كلمة المرور الافتراضية: admin123</p>
+                </div>
+                
+                <div id="adminContent" style="display:none;">
+                    <div class="stats-overview">
+                        <div class="stat-card">
+                            <span class="stat-number" id="adminTotalDesigns">0</span>
+                            <div class="stat-label">إجمالي التصاميم</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="adminTotalClasses">0</span>
+                            <div class="stat-label">عدد الصفوف</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="selectedCount">0</span>
+                            <div class="stat-label">التصاميم المحددة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-actions">
+                        <button class="download-all-btn" id="downloadAllDesigns">تنزيل كل التصميمات (ZIP)</button>
+                        <button class="print-all-btn" id="printSelectedDesigns">طباعة المحددة</button>
+                        <button class="export-pdf-btn" id="exportToPDF">تصدير PDF</button>
+                        <button class="clear-all-btn" id="clearAllDesigns">مسح جميع التصاميم</button>
+                    </div>
+                    
+                    <div class="select-all-controls">
+                        <button class="select-all-btn" id="selectAllDesigns">تحديد الكل</button>
+                        <button class="deselect-all-btn" id="deselectAllDesigns">إلغاء تحديد الكل</button>
+                    </div>
+                    
+                    <div class="admin-design-list" id="adminDesignList">
+                        <!-- Designs will be loaded here by JS -->
+                    </div>
+                    
+                    <div id="noDesigns" style="text-align: center; padding: 40px; color: #666; display: none;">
+                        <h3>لا توجد تصاميم</h3>
+                        <p>لم يتم إرسال أي تصاميم بعد</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 مصمم الخلفيات الوطنية - أكاديمية طويق. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>
+
